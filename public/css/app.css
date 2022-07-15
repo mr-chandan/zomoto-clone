@@ -4,10 +4,10 @@ body {
   color: #232323;
 }
 
-nav li:last-child a {
+#child{
   background: #fe5f1e;
 }
-nav li:last-child a:hover {
+#child a:hover {
   background: #b23301;
 }
 
@@ -56,3 +56,7 @@ section.login {
   background: #f8f8f8;
   min-height: 100vh;
 }
+.primary:hover{
+  color: #b23301;
+}
+
