@@ -6,7 +6,8 @@ function ordercontrollers() {
     store(req, res) {
       const { phone, address } = req.body;
       if (!phone || !address) {
-        return res.status(422).json({ message: "All fields are required" });
+        req.flash('error', 'All fields are required')
+        return res.redirect('/cart')
       }
 
       const order = new Order({
@@ -28,9 +29,12 @@ function ordercontrollers() {
         });
     },
     async index(req, res) {
-      const orders = await Order.find({ customerId: req.user._id },null,{sort:{
-'createdAt':-1}});
-      res.render('customers/orders',{orders:orders,moment:moment})
+      const orders = await Order.find({ customerId: req.user._id }, null, {
+        sort: {
+          'createdAt': -1
+        }
+      });
+      res.render('customers/orders', { orders: orders, moment: moment })
 
     },
   };

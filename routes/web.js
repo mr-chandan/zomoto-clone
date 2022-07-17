@@ -5,11 +5,10 @@ const guest = require('../app/http/middlewares/guest')
 const ordercontrollers = require('../app/http/controllers/customers/ordercontrollers')
 const adminordercontrollers = require('../app/http/controllers/admin/ordercontoller')
 const auth = require('../app/http/middlewares/auth')
+const admin = require('../app/http/middlewares/admin')
 function initroutes(app){
 
     app.get('/',homecontroller().index)
-
-
 
 
     app.get('/login',guest,authcontrollers().login)
@@ -32,7 +31,7 @@ function initroutes(app){
 
     //admin
 
-    app.get('/admin/orders',auth,adminordercontrollers().index)
+    app.get('/admin/orders',admin,adminordercontrollers().index)
 
 }
 
