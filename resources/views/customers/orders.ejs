@@ -22,9 +22,9 @@
             <tbody>
                 <%if(orders.length){%>
                     <%orders.forEach((order)=>{%>
-                       
+
                         <tr>
-                            <td class="border px-4 py-2"><a class='link' href="/">
+                            <td class="border px-4 py-2"><a class='link' href="/customers/orders/<%=order.id%>">
                                     <%=order._id%>
                                 </a></td>
                             <td class="border px-4 py-2"><a class='link' href="/">
@@ -44,3 +44,7 @@
         </table>
     </div>
 </section>
+
+
+
+

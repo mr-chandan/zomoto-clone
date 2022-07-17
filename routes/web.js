@@ -6,6 +6,7 @@ const ordercontrollers = require('../app/http/controllers/customers/ordercontrol
 const adminordercontrollers = require('../app/http/controllers/admin/ordercontoller')
 const auth = require('../app/http/middlewares/auth')
 const admin = require('../app/http/middlewares/admin')
+const statuscontroller = require('../app/http/controllers/admin/statusconstroller')
 function initroutes(app){
 
     app.get('/',homecontroller().index)
@@ -28,10 +29,20 @@ function initroutes(app){
     app.post('/orders',auth,ordercontrollers().store)
 
     app.get('/customers/orders',auth,ordercontrollers().index)
+    
+    app.get('/customers/orders/:id',auth,ordercontrollers().show)
+
+
+
+
+
 
     //admin
 
     app.get('/admin/orders',admin,adminordercontrollers().index)
+
+    app.post('/admin/order/status',admin,statuscontroller().update)
+  
 
 }
 

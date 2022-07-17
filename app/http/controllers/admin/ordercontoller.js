@@ -12,6 +12,9 @@ function ordercontroller() {
                     return res.render('admin/orders')
                 }
             })
+        },
+        show(req,res){
+            const Order = Order.findById(req.parm.id)
         }
     }
 }

@@ -36,8 +36,16 @@ function ordercontrollers() {
       });
       res.render('customers/orders', { orders: orders, moment: moment })
 
-    },
-  };
+    }, async show(req, res) {
+      const order = await Order.findById(req.params.id)
+      //auth user
+      if (req.user._id.toString() === order.customerId.toString()) {
+        res.render('customers/singleorder', { order: order })
+      } else {
+        res.redirect('/')
+      }
+    }
+  }
 }
 
 module.exports = ordercontrollers;
